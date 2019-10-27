@@ -26,6 +26,9 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+    .fail(function(){
+      alert('error');
+    })
   end
 
   private
