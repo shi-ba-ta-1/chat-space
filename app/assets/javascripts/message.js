@@ -35,11 +35,10 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
-      $('#message_content').val('')
-      $('#message_image').val('')
-      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight})
-      $('.form__submit').removeAttr('disabled')
+      $('.messages').append(html);
+      $('#new_message')[0].reset();
+      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
+      $('.form__submit').removeAttr('disabled');
     })
     .fail(function(){
       alert('error');
