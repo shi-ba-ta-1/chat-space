@@ -1,4 +1,3 @@
-
 json.message do |message|
   message.content  @message.content
   message.user_id  @message.user.id

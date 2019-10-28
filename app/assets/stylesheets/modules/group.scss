@@ -89,6 +89,11 @@
     clear: both;
     display: block;
   }
+  &__remove {
+    float:right;
+    color: #f05050;
+    cursor: pointer;
+  }
   &__name {
     float: left;
   }

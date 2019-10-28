@@ -6,14 +6,15 @@
       .main-header__left-box 
       
         %h2.main-header__left-box__current-group
-          hogehoge
+          =@group.name
         %ul.main-header__left-box__members-list
           Member：
           %li.main-header__left-box__members-list__member 
-            hoge
+          - @group.users.each do |user|
+            =user.name
 
       .main-header__edit-button 
-        =link_to "/groups/1/edit/" do
+        =link_to edit_group_path(@group.id) do
           Edit
           
 

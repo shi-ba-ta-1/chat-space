@@ -1,8 +1,8 @@
 $(function(){
   function buildHTML(data){
-    var imgHTML = data.message.image? `<img class="lower-message__image" src="${data.message.image}"></img>` : ""
+    let imgHTML = data.message.image? `<img class="lower-message__image" src="${data.message.image}"></img>` : ""
 
-    var html = `<div class="message">
+    let html = `<div class="message">
                   <div class="message__upper-info">
                     <div class="message__upper-info__talker">
                     ${data.message.user_name}
@@ -20,29 +20,30 @@ $(function(){
                 </div>`
     return html;
   }
-  $('#new_message').on('submit', function(e){
-    e.preventDefault();
-    console.log(this)
-    var formData = new FormData(this);
-    var url = window.location.href + ''
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false,
-    })
-    .done(function(data){
-      var html = buildHTML(data);
-      $('.messages').append(html);
-      $('#new_message')[0].reset();
-      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
-      $('.form__submit').removeAttr('disabled');
-    })
-    .fail(function(){
-      alert('error');
-      $('.form__submit').removeAttr('disabled')
-    })
-  })
-})
+$(document).on('turbolinks:load',function(){
+    $('#new_message').on('submit', function(e){
+      e.preventDefault();
+      let formData = new FormData(this);
+      let url = window.location.href + ''
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+      })
+      .done(function(data){
+        let html = buildHTML(data);
+        $('.messages').append(html);
+        $('#new_message')[0].reset();
+        $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
+        $('.form__submit').removeAttr('disabled');
+      })
+      .fail(function(){
+        alert('メッセージを入力してください');
+        $('.form__submit').removeAttr('disabled')
+      })
+    });
+  });
+});
