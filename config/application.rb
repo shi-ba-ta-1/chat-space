@@ -18,3 +18,5 @@ module ChatSpace
     config.time_zone = "Tokyo"
   end
 end
+
+#からのコミット
