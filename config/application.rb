@@ -19,4 +19,3 @@ module ChatSpace
   end
 end
 
-#からのコミット
